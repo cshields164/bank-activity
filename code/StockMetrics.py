@@ -1,6 +1,4 @@
-
 import statistics as stats
-
 from code.StockData import StockData
 
 
@@ -16,27 +14,55 @@ class StockMetrics(StockData):
     def average01(self):
         """pt1
         """
-        val = ""
         averages = []
         for row in self.data:
-            new_lst = [int(val) for row in val if val != " "]
-            new_lst = round(stats.mean(new_lst), 3)
-            averages.append(new_lst)
-
-
+            new_list = []
+            print(row)
+            for val in row[1:]:
+                if val == " " or val == "":               
+                    continue
+                else:
+                    new_list.append(float(val))
+                    print(new_list, "<<,")  
+            #averages.append(round(sum(new_list)/ len(new_list), 3))
+            averages.append(round(stats.mean(new_list), 3))                          
+        return averages
+            
             
 
-        return averages
 
     def median02(self):
         """pt2
         """
-        ...
+        medians = []
+        for row in self.data:
+            new_list = []
+            print(row)
+            for val in row[1:]:
+                if val == " " or val == "":               
+                    continue
+                else:
+                    new_list.append(float(val))
+                    print(new_list, "<<,")  
+            medians.append(stats.median(new_list))
+        return medians
+
 
     def stddev03(self):
         """pt3
         """
-        ...
+        std_dev = []
+        for row in self.data:
+            new_list = []
+            print(row)
+            for val in row[1:]:
+                if val == " " or val == "":               
+                    continue
+                else:
+                    new_list.append(float(val))
+                    print(new_list, "<<,")  
+            std_dev.append(round(stats.stdev(new_list), 3))
+        return std_dev
 
 #def calculate_lengths(self):
  #       lengths = []

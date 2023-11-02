@@ -17,15 +17,15 @@ class StockMetrics(StockData):
         averages = []
         for row in self.data:
             new_list = []
-            print(row)
-            for val in row[1:]:
-                if val == " " or val == "":               
+            print(type(row))
+            for val in row[1:]:         # for each value starting from index position 1
+                if val == " " or val == "":         # if the element in the list is an empty string or a whitespace, continue and skip it. We do not want to add it to the averages list      
                     continue
                 else:
-                    new_list.append(float(val))
+                    new_list.append(float(val))     # if the element in the list is not an empty string or whitespace, append it to the new_list list and change the type to a float
                     print(new_list, "<<,")  
             #averages.append(round(sum(new_list)/ len(new_list), 3))
-            averages.append(round(stats.mean(new_list), 3))                          
+            averages.append(round(stats.mean(new_list), 3))         # append the mean of each row in the new_list list to the averages list and then round it 3 decimal places                 
         return averages
             
             
@@ -38,13 +38,13 @@ class StockMetrics(StockData):
         for row in self.data:
             new_list = []
             print(row)
-            for val in row[1:]:
-                if val == " " or val == "":               
+            for val in row[1:]:         # for each value starting from index position 1
+                if val == " " or val == "":               # if the element in the list is an empty string or a whitespace, continue and skip it. We do not want to add it to the medians list 
                     continue
                 else:
-                    new_list.append(float(val))
+                    new_list.append(float(val))              # if the element in the list is not an empty string or whitespace, append it to the new_list list and change the type to a float
                     print(new_list, "<<,")  
-            medians.append(stats.median(new_list))
+            medians.append(stats.median(new_list))          # append the median of each row in the new_list list to the medians list
         return medians
 
 
@@ -55,22 +55,12 @@ class StockMetrics(StockData):
         for row in self.data:
             new_list = []
             print(row)
-            for val in row[1:]:
-                if val == " " or val == "":               
+            for val in row[1:]:                   # for each value starting from index position 1
+                if val == " " or val == "":      # if the element in the list is an empty string or a whitespace, continue and skip it. We do not want to add it to the std_dev list          
                     continue
                 else:
-                    new_list.append(float(val))
+                    new_list.append(float(val))          # if the element in the list is not an empty string or whitespace, append it to the new_list list and change the type to a float
                     print(new_list, "<<,")  
-            std_dev.append(round(stats.stdev(new_list), 3))
+            std_dev.append(round(stats.stdev(new_list), 3))  # append the standard deviation of each row in the new_list list to the std_dev list and then round it 3 decimal places
         return std_dev
 
-#def calculate_lengths(self):
- #       lengths = []
-  #      for row in self.data:
-            # TODO: Count the number of non-empty items in each row
-            # and append the count to the lengths list
-            # also be sure to ignore the date value in this list
- #          new_row = [val for val in row if <cond>]
- #          length = len(row[1:])  # Replace None with appropriate code
- #           lengths.append(length)
-  #      return lengths
